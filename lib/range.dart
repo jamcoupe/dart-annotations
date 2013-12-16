@@ -28,7 +28,7 @@ class range extends Annotation {
    * Giving a [min] value larger than [max] will only throw an [ArgumentError]
    * when you are checking if the value is valid. Not during instantiation.
    */
-  const range({this.max: null, this.min: null, this.message: "is out of range"});
+  const range({this.max: null, this.min: null, this.message: "Value is out of range"});
 
   /**
    * This takes a value and verifies that it is within the range provided
