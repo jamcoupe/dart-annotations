@@ -1,7 +1,7 @@
 name: annotations
-version: 0.1.0-alpha.01
+version: 0.1.0-alpha.02
 description: >
-  Metadata annotations to allow for simple unobstrutive valiation
+  Metadata annotations for unobstrutive instance variable valiation
 author: Jamie Couperwhite <jcouperwhite@gmail.com>
 homepage: https://github.com/jamcoupe/dart-annotations
 dependencies:

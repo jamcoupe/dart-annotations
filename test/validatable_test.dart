@@ -9,35 +9,41 @@ void main() {
   group('testing a class', () {
 
     test('object with require with valid', () {
-      Test test = new Test(12);
+      Test test = new Test(12, 10);
+      print(test.invalidProperties);
       expect(test.isValid(), isTrue);
     });
 
     test('object with require no valid', () {
-      Test test = new Test(9);
+      Test test = new Test(9, 10);
       expect(test.isValid(), isFalse);
     });
 
 
     test('get errors', () {
 
-      Test test = new Test(90);
+      Test test = new Test(90, 10);
       expect(test.isValid(), isFalse);
-      test.getValidationErrors().forEach((error) {
-        print("${error.property} ${error.message}");
-      });
-    });
-
-
-    test('get errors', () {
-      Test test = new Test(1);
       expect(test.invalidProperties.length, equals(1));
     });
 
-    test('no errors', () {
-      Test test = new Test(15);
-      expect(test.invalidProperties.length, equals(0));
 
+    test('get errors 2', () {
+      Test test = new Test(1, 2);
+     // print(test.invalidProperties);
+      expect(test.invalidProperties.length, equals(2));
+    });
+
+    test('no errors', () {
+      Test test = new Test(15, 10);
+      expect(test.invalidProperties.length, equals(0));
+    });
+
+    test('with multiple errors on the same property', () {
+      Test test = new Test(15, 90);
+      test.test3 = 20;
+
+      expect(test.invalidProperties.length, equals(1));
     });
   });
 }
@@ -48,6 +54,16 @@ class Test extends Object with Validatable {
   @required()
   int test;
 
+  @range(min:9)
+  int test2;
 
-  Test([this.test = null]);
+  //todo: disallow two metadata of the same type
+  @range(min:1, max:5)
+  @range(min:40, max:50)
+  int test3;
+
+
+  Test([this.test = null, this.test2 = null]);
+
+
 }

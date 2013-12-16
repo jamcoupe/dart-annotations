@@ -36,7 +36,8 @@ class range extends Annotation {
    */
   bool isValid(value) {
 
-    if(value == null) return false;
+    // return true because required will deal with null values
+    if(value == null) return true;
 
     if(value is bool) {
       throw new ArgumentError("You shouldn't be trying to place a range on a [bool]");

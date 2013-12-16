@@ -15,22 +15,29 @@ abstract class Validatable {
     return _validateProperties();
   }
 
-  List<InvalidProperty> getValidationErrors() {
-    List<InvalidProperty> invalidProps = [];
+
+  Map<Symbol, List<String>> getValidationErrors() {
+    Map<Symbol, List<String>> invalidProps = {};
     this._reflection = reflect(this);
+
+    // Loop through all the properties with an annotation.
     for(var property in __getAnnotatedProperties()) {
       var value = _reflection.getField(property.simpleName);
       String name = MirrorSystem.getName(property.simpleName);
       for(var prop in property.metadata) {
-        Annotation annotation = prop.reflectee;
+        var annotation = prop.reflectee;
         if(!annotation.isValid(value.reflectee)) {
-            invalidProps.add(new InvalidProperty(name, annotation.message, property.simpleName));
+
+          if(invalidProps[property.simpleName] == null) {
+            invalidProps[property.simpleName] = new List<String>();
+          }
+
+          invalidProps[property.simpleName].add(annotation.message);
         }
       }
     }
     return invalidProps;
   }
-
 
 
   /// Loops over each annotations annotation and checks if its valid.

@@ -8,7 +8,7 @@ void main() {
 
     //todo:add more tests
     var validRequired = [
-      'HI', '1', 3, [1,2,3,]
+      'HI', '1', 3, [1,2,3]
     ];
 
     validRequired.forEach((valid) {
