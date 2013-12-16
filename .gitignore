@@ -1,3 +1,5 @@
 pubspec.lock
-*./idea
-*.DS_Store
+.idea/
+.DS_Store
+packages/
+doc/

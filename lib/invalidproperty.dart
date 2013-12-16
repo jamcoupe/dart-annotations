@@ -1,4 +1,4 @@
-part of attribtues;
+part of annotations;
 
 class InvalidProperty {
   final String property;
