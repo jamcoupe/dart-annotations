@@ -1,6 +1,8 @@
 #Annotations
 
-This library aims to provide some non-obstructive validation to Dart.
+This library aims to provide some non-obstructive validation to Dart properties.
+
+**Note:** You are free to have invalid data in an object, this library does not give you warnings. You find out if there are errors when you call the objects `.isValid()` method only.
 
 #Usage
 
@@ -8,7 +10,8 @@ Currently the library is not in a production ready state. *Help would be greatly
 
 The only two annotations available right now are
 
-`@require(message:"Value is required")` ensures the property is not `null` or `""` or an empty list or map.
+`@required(message:"Value is required")` ensures the property is not `null` or `""` or an empty list or map.
+
 `@range(min:10, max:20, message:"Value must be between 10 and 20")` ensures that the property's `.length` value or `num` value is between the specified range.
 
     import 'package:annotations/annotation.dart';
@@ -26,10 +29,7 @@ The only two annotations available right now are
 
     }
 
-You can use `require` and `range` annotations without using the `Validatable` mixin. However they will prove useless unless you implement your own way of checking for errors.
+You can use `required` and `range` annotations without using the `Validatable` mixin. However they will prove useless unless you implement your own way of checking for errors using the provided annotations.
 
-`Validatable` basically adds methods to a class that finds all properties that have an attribute that extends from the `Annotation` class and if so it will validate the the property is correct or not.
-
-
-
+`Validatable` basically adds methods to a class that allows it to check if the defined `Annotations` are valid.
 
