@@ -11,7 +11,6 @@ class required extends Annotation {
 
 
   /// Creates a new [required] annotation object that can take the optional [message] [String] value
-  ///
   const required({this.message:"This value is required."});
 
   /// If the [value] is a [null] value returns false
