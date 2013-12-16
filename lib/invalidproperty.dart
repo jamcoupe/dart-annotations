@@ -5,5 +5,9 @@ class InvalidProperty {
   final String message;
   final Symbol symbol;
 
+  /**
+   * InvalidProperty Object
+   * Jamie
+   */
   InvalidProperty(this.property, this.message, [this.symbol]);
 }

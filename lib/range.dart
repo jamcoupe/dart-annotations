@@ -42,6 +42,7 @@ class range extends Annotation {
       throw new ArgumentError("You shouldn't be trying to place a range on a [bool]");
     }
 
+
     num numberVal;
 
     if(value is num) numberVal = value;
